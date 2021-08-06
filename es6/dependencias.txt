@@ -7,6 +7,13 @@ prettier
 
 
 -----------------------
-Agregar estos valores en el package.json
+eslint => Agregar estos valores en el package.json
 "lin": "eslint *.js ",
 "fix": "npx eslint . --fix"
+
+
+-------------------
+nodemon => Agregar estos valores en el package.json
+
+
+ "service": "nodemon"
