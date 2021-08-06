@@ -4,3 +4,9 @@ eslint-config-prettier
 eslint-plugin-import
 eslint-plugin-prettier
 prettier
+
+
+-----------------------
+Agregar estos valores en el package.json
+"lin": "eslint *.js ",
+"fix": "npx eslint . --fix"
