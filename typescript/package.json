@@ -1,43 +1,41 @@
 {
-  "name": "typescript-basics",
+  "name": "skeleton-ts",
   "version": "1.0.0",
+  "description": "",
   "main": "index.js",
   "scripts": {
-    "build:dev": "webpack --mode development",
-    "build": "webpack --mode production",
-    "lint": "eslint src/* --ext .ts",
-    "service": "nodemon",
-    "start": "node src/index"
+    
+    "start": "nodemon index.js",
+    "build": "npm run lint && tsc -p .",
+    "start:local": "npm run lint && NODE_ENV=local nodemon index.js",
+    "start:test": "npm run lint && NODE_ENV=test nodemon build/server.js",
+    "start:staging": "npm run lint && NODE_ENV=staging node build/server.js",
+    "start:production": "npm run lint && NODE_ENV=production build/server.js",
+    "lint": "eslint src/**/*.ts",
+    "lint-fix": "eslint --fix src/**/*.ts",
+    "pretty": "prettier --write 'src/**/*.ts'",
+    "prepare": "husky install",
+    "precommit": "npm run lint-fix && npm run pretty",
+    "prepush": "npm run lint ",
+    "test": "jest --coverage",
+    "test:watch": "jest --watch"
+  },
+  "devDependencies": {
+    "@types/node": "^16.7.1",
+    "@typescript-eslint/eslint-plugin": "^4.29.2",
+    "@typescript-eslint/parser": "^4.29.2",
+    "eslint": "^7.32.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-config-airbnb-typescript": "^13.0.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-import": "^2.24.1",
+    "eslint-plugin-prettier": "^3.4.1",
+    "nodemon": "^2.0.12",
+    "prettier": "^2.3.2",
+    "ts-node": "^10.2.1",
+    "typescript": "^4.3.5"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC",
-  "devDependencies": {
-    "@types/cors": "^2.8.10",
-    "@types/express": "^4.17.12",
-    "@types/mongoose": "^5.11.97",
-    "@types/node": "^15.12.2",
-    "@typescript-eslint/eslint-plugin": "^4.27.0",
-    "@typescript-eslint/parser": "^4.27.0",
-    "dotenv": "^10.0.0",
-    "eslint": "^7.28.0",
-    "eslint-config-airbnb-typescript": "^12.3.1",
-    "eslint-config-prettier": "^8.3.0",
-    "eslint-plugin-import": "^2.23.4",
-    "eslint-plugin-prettier": "^3.4.0",
-    "nodemon": "^2.0.7",
-    "prettier": "^2.3.1",
-    "ts-loader": "^9.2.3",
-    "ts-node": "^10.0.0",
-    "typescript": "^4.3.3",
-    "webpack": "^5.39.1",
-    "webpack-cli": "^4.7.2",
-    "webpack-node-externals": "^3.0.0"
-  },
-  "dependencies": {
-    "cors": "^2.8.5",
-    "express": "^4.17.1",
-    "mongoose": "^5.12.14"
-  },
-  "description": ""
+  "license": "ISC"
 }
