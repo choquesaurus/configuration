@@ -1,9 +1,0 @@
-/home/daniel/Escritorio/Typescript-Javascript/proyects/typescript-basics/webpack.config.js
-/home/daniel/Escritorio/Typescript-Javascript/proyects/typescript-basics/tsconfig.json
-/home/daniel/Escritorio/Typescript-Javascript/proyects/typescript-basics/package.json
-/home/daniel/Escritorio/Typescript-Javascript/proyects/typescript-basics/package-lock.json
-/home/daniel/Escritorio/Typescript-Javascript/proyects/typescript-basics/nodemon.json
-/home/daniel/Escritorio/Typescript-Javascript/proyects/typescript-basics/.gitignore
-/home/daniel/Escritorio/Typescript-Javascript/proyects/typescript-basics/.eslintrc.js
-/home/daniel/Escritorio/Typescript-Javascript/proyects/typescript-basics/.eslintignore
-/home/daniel/Escritorio/Typescript-Javascript/proyects/typescript-basics/.prettierrc
