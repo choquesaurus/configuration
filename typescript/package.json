@@ -2,25 +2,25 @@
   "name": "skeleton-ts",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
-    
-    "start": "nodemon index.js",
+    "start": "NODE_ENV=production nodemon",
     "build": "npm run lint && tsc -p .",
-    "start:local": "npm run lint && NODE_ENV=local nodemon index.js",
-    "start:test": "npm run lint && NODE_ENV=test nodemon build/server.js",
-    "start:staging": "npm run lint && NODE_ENV=staging node build/server.js",
-    "start:production": "npm run lint && NODE_ENV=production build/server.js",
+    "start:local": "npm run lint && cross-env NODE_ENV=local nodemon",
+    "start:test": "npm run lint && cross-env NODE_ENV=test nodemon build/server.js",
+    "start:staging": "npm run lint && cross-env NODE_ENV=staging node build/server.js",
+    "start:production": "npm run lint && cross-env NODE_ENV=production build/server.js",
     "lint": "eslint src/**/*.ts",
     "lint-fix": "eslint --fix src/**/*.ts",
     "pretty": "prettier --write 'src/**/*.ts'",
-    "prepare": "husky install",
     "precommit": "npm run lint-fix && npm run pretty",
     "prepush": "npm run lint ",
     "test": "jest --coverage",
     "test:watch": "jest --watch"
   },
   "devDependencies": {
+    "@types/cors": "^2.8.12",
+    "@types/express": "^4.17.13",
     "@types/node": "^16.7.1",
     "@typescript-eslint/eslint-plugin": "^4.29.2",
     "@typescript-eslint/parser": "^4.29.2",
@@ -37,5 +37,10 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "cross-env": "^7.0.3",
+    "express": "^4.17.1"
+  }
 }
