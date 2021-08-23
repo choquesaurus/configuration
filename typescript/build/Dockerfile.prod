@@ -1,0 +1,23 @@
+FROM node:14 as build
+
+WORKDIR /app
+
+COPY package*.json ./
+
+RUN npm ci --only=production
+
+COPY . .
+
+RUN npm run build && rm -rf src
+
+# run rm -rf src
+
+FROM gcr.io/distroless/nodejs:14
+
+# copy --from=build /app/dist /app
+COPY --from=build /app /app
+
+WORKDIR app
+EXPOSE 5600
+CMD ["/app/dist/index.js","cross-env","NODE_ENV=production"]
+# cmd ["npm","start"]
