@@ -1,8 +1,24 @@
+// import * as https from 'https';
 
- function Saludando(name:string,ape:string):void{
-    console.log(`Buenos buenas ${name} xd ${ape}`);
-}
+// import App from './App'; 
+// import Environments from './Environment/Environment';
 
-Saludando('Daniel','Choque');
+//  const env: Environments = new Environments( process.env.NODE_ENV );
+//  const app:App = new App(env);
+// let server: https.Server;
 
-console.log(process.env.NODE_ENV);
+//  app.init().then(()=>{
+//     server = app.httpsServer; // http.createServer(App);
+    
+//     server.listen(env.port);
+//     console.log(process.env.NAME);
+//     console.log('running in port ' + env.port);
+//  });
+ 
+//  // new App(process.env.NODE_ENV)
+// // .init().then(()=>{
+// //  console.log('Hello');   
+// // });
+
+import { Server } from './App';
+Server.start();

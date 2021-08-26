@@ -1,0 +1,8 @@
+node_modules
+.env*
+.eslintignore
+.git*
+.prettier*
+# Makefile
+dist
+.npm/_logs/*

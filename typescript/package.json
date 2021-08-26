@@ -4,12 +4,13 @@
   "description": "",
   "main": "dist/index.js",
   "scripts": {
-    "start": "NODE_ENV=production nodemon",
     "build": "npm run lint && tsc -p .",
-    "start:local": "npm run lint && cross-env NODE_ENV=local nodemon",
-    "start:test": "npm run lint && cross-env NODE_ENV=test nodemon build/server.js",
-    "start:staging": "npm run lint && cross-env NODE_ENV=staging node build/server.js",
-    "start:production": "npm run lint && cross-env NODE_ENV=production build/server.js",
+    "start:dev:docker": "cross-env NODE_ENV=development nodemon",
+    "start:dev": "npm run lint && cross-env NODE_ENV=development nodemon dotenv_config_path=.env.dev",
+    "start:production": "npm run lint && cross-env NODE_ENV=production dist/index.js",
+    "start:test": "npm run lint && cross-env NODE_ENV=test node -r dotenv/config dist/index.js dotenv_config_path=.env.test",
+    "start:testing": "npm run lint && cross-env NODE_ENV=test nodemon dist/index.js dotenv_config_path=.env.test",
+    "clean": "rm -rf dist",
     "lint": "eslint src/**/*.ts",
     "lint-fix": "eslint --fix src/**/*.ts",
     "pretty": "prettier --write 'src/**/*.ts'",
@@ -39,8 +40,11 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@types/morgan": "^1.9.3",
     "cors": "^2.8.5",
     "cross-env": "^7.0.3",
-    "express": "^4.17.1"
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "morgan": "^1.10.0"
   }
 }

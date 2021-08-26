@@ -1,0 +1,15 @@
+version: '3.9'
+services: 
+  proyect_dev:
+    build: 
+      context: .
+      dockerfile: ./build/Dockerfile.dev
+    environment: 
+      - PORT=3009
+      - NAME=Danielito
+      - NODE_ENV_CONTEXT=DEVELOPMENT
+      - URI=conecction_s33_ddwe_mongo
+    expose: 
+      - "3009"
+    ports: 
+      - "3009:3009"
