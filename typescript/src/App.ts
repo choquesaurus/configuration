@@ -1,10 +1,11 @@
-/** @format */
 
 import express from 'express';
 import cors from 'cors';
 import morgan from 'morgan';
 import { RegisterRoutes } from './Routes/register';
+import { logger } from './lib/logger';
 import './Connection/index';
+
 export default class App {
 	public app: express.Application;
 
@@ -18,7 +19,10 @@ export default class App {
 	}
 
 	private middleware(): void {
-		this.app.use(cors());
+		this.app.use(cors());		
+		// this.app.use(cors({
+		// 	origin:process.env.CORS_ORIGIN			
+		// }));
 		this.app.use(morgan('dev'));
 		this.app.use(express.json());
 		this.app.use(express.urlencoded({ extended: true }));
@@ -26,17 +30,11 @@ export default class App {
 
 	private routes(): void {
 		RegisterRoutes(this.app);
-        // this.app.use(
-		// 	'/',
-		// 	(req: express.Request, res: express.Response): void => {
-		// 		console.log('hola');
-		// 		res.send({ message: 'Saludos' });
-		// 	},
-		// );
 	}
 
 	public start(): void {
 		this.app.listen(this.app.get('port'), () => {
+			logger.info('Server Reloadd');
 			console.log(`Server Running  ${this.app.get('port')}`);
 		});
 	}
