@@ -21,4 +21,6 @@
 // // });
 
 import { Server } from './App';
-Server.start();
+const listenerServer = Server.start();
+
+export { Server, listenerServer }; 

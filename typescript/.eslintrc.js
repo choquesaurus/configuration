@@ -18,6 +18,12 @@ module.exports = {
 		sourceType:'module'
 	},
 	plugins: ['@typescript-eslint'],
+	// "env":{
+	// 	jest:true	
+	// },
+	"globals": {
+		"jest": true,
+	  },
 	rules  : {
 		"no-console": "off",
 		// 'prettier/prettier'                               : ['error'],

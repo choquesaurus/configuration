@@ -10,7 +10,8 @@ export default class App {
 	public app: express.Application;
 
 	public port: number;
-
+	
+ 
 	constructor() {
 		this.app = express();
 		this.app.set('port', (process.env.PORT as string) || '5600');
@@ -32,11 +33,13 @@ export default class App {
 		RegisterRoutes(this.app);
 	}
 
-	public start(): void {
-		this.app.listen(this.app.get('port'), () => {
+	public start() {
+		const listenerServer = this.app.listen(this.app.get('port'), () => {
 			logger.info('Server Reloadd');
 			console.log(`Server Running  ${this.app.get('port')}`);
 		});
+		
+	return listenerServer;	
 	}
 }
 
@@ -45,5 +48,4 @@ export default class App {
 // app.start();
 
 const server = new App();
-
 export { server as Server };
