@@ -1,0 +1,26 @@
+
+
+@port = {{$dotenv PORT}}
+@host = http://localhost
+@domain_uri = {{host}}:{{port}}/api/projects
+#################
+
+POST  {{domain_uri}}
+Content-Type: application/json
+
+{
+     "id"          : "p5",
+     "name"        : "Devops",
+     "priority"    : 1,
+     "description" : "Realizar devops",
+     "deliverydate": "2021/12/13"
+}
+
+#################
+
+GET  {{domain_uri}}
+
+#################
+
+DELETE {{domain_uri}}/p9        
+Content-Type: application/json
