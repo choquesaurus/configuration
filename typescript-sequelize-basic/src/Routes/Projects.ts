@@ -43,6 +43,31 @@ routesProjects
 	})
 routesProjects
     .route('/:id')
+	.get(async (req:Request,res:Response)=>{
+		try {
+			const dto = new ProjectController({ id:req.params.id })
+			const findone = await dto.process('findone');
+			res.status(200).json({ values: findone })
+		} catch (error:any) {
+			res.status(501).json({
+				statuscode:501,
+				error:error.message 
+			})
+		}
+	})
+	.put( async (req:Request,res:Response)=>{
+		try {
+            const dto = new ProjectController({ id:req.params.id,...req.body })
+			const update = await dto.process('update')
+			res.status(200).json({ values: update })
+			
+		} catch (error:any) {
+			res.status(501).json({
+				statuscode:501,
+				error:error.message 
+			})
+		}
+	})
     .delete(async (req:Request , res:Response):Promise<void> => {
      try {
             const dto = new ProjectController({ id:req.params.id })

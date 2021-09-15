@@ -18,9 +18,28 @@ Content-Type: application/json
 
 #################
 
+#get all
 GET  {{domain_uri}}
 
 #################
+#find one
+GET  {{domain_uri}}/p2       
 
+
+#################
+
+#################
+#update
+PUT   {{domain_uri}}/p4        
+Content-Type: application/json
+
+{
+    "name": "Devops",
+      "description": "Crear pipelines",
+      "deliverydate": "2021-12-15"
+}
+
+#################
+#delete
 DELETE {{domain_uri}}/p9        
 Content-Type: application/json
