@@ -1,26 +1,26 @@
 
 import {  Model, DataTypes,Optional } from 'sequelize';
 import sequelizeConnection from  '../DB/connection';
-import { IProjects } from '../Interfaces/index';
-// import { MTask } from '../Models/index'
+import { ITask } from '../Interfaces/index';
+import  MProject  from './MProjects'
 
-interface ProjectsCreationAttributes extends Optional<IProjects, 'description'> {} 
+interface ProjectsCreationAttributes extends Optional<ITask, 'description'> {} 
 
-class Project extends Model<IProjects, ProjectsCreationAttributes>
-  implements IProjects {
+class Task extends Model<ITask, ProjectsCreationAttributes>
+  implements ITask {
     public id!          : string;
     
     public name!        : string;
     
-    public priority!    : number;
+    public done!    : number;
     
     public description! : string;
     
-    public deliverydate!: string;
+    public projectid!: string;
     
   }
   
-  const MProject = Project.init(
+  const MTask = Task.init(
       {
       id:{
           type: DataTypes.CHAR(10),
@@ -30,7 +30,7 @@ class Project extends Model<IProjects, ProjectsCreationAttributes>
           type:DataTypes.TEXT,
           allowNull:false
       },
-      priority:{
+      done:{
           type:DataTypes.INTEGER,
           allowNull:false
       },
@@ -38,24 +38,22 @@ class Project extends Model<IProjects, ProjectsCreationAttributes>
         type:DataTypes.TEXT,
         defaultValue:''
       },
-      deliverydate:{
-        type:DataTypes.DATE
-        
+      projectid:{
+        type:DataTypes.TEXT
       }
     },
       {
         sequelize:sequelizeConnection,
-        tableName:'proyectos',
-        // timestamps:false
-      }
+        tableName:'tasks',
+        // underscored:true
+          
+    }
   );
   
   
-  
-  
-  // MProject.hasMany(MTask,{ foreignKey:'projectid' })
   // MTask.belongsTo(MProject,{ foreignKey:'projectid' });
- export default  MProject 
+  export default MTask;
+//   module.exports = { MTask };
   
   
 // async function doStuffWithUserModel() {

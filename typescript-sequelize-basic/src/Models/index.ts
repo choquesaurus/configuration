@@ -1,4 +1,5 @@
-import { MProject } from './MProjects';
+import  MProject  from './MProjects';
+import MTask from './MTask';
 
 
-export { MProject };
+export { MProject , MTask };

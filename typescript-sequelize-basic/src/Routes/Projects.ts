@@ -4,7 +4,8 @@ import { Router, Response, Request } from 'express'
 import { logger } from '../lib/logger'
 import { Project as ProjectController } from '../Controllers/index'
 import { Dtoprojects } from '../Interfaces/index'
-
+import { MProject , MTask } from '../Models/index'
+import { Op } from 'sequelize'
 // interface ApiResponse<T>{
 // 	errorMessage?: string;
 // 	responseCode?: string;
@@ -18,6 +19,31 @@ import { Dtoprojects } from '../Interfaces/index'
 // }
 
 const routesProjects = Router()
+
+routesProjects.get('/all',async (_,res:Response): Promise<void> => { 
+	try {
+		
+		const all = await MProject.findAll({
+			where:{
+			deliverydate:{
+				[Op.gte]:'2021-12-24'
+			}	
+			},
+			include:{
+				model:MTask,
+				attributes:['name','description','done'],
+				as:'tareas'
+			},
+		})
+		res.status(200).json({ values: all })
+		
+	} catch (error:any) {
+		res.status(501).json({
+			statuscode:501,
+			error:error.message 
+		})
+	}
+})
 
 routesProjects
 	.route('/')

@@ -6,7 +6,7 @@ import { RegisterRoutes } from './Routes/register';
 import { logger } from './lib/logger';
 // import './Connection/index';
 import sequelizeConnection from './DB/connection';
-
+import  './Associations/index'
 export default class App {
 	public app: express.Application;
 
