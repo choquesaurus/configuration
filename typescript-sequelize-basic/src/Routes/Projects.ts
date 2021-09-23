@@ -5,7 +5,9 @@ import { logger } from '../lib/logger'
 import { Project as ProjectController } from '../Controllers/index'
 import { Dtoprojects } from '../Interfaces/index'
 import { MProject , MTask } from '../Models/index'
-import { Op } from 'sequelize'
+// import { Op } from 'sequelize'
+
+
 // interface ApiResponse<T>{
 // 	errorMessage?: string;
 // 	responseCode?: string;
@@ -20,15 +22,15 @@ import { Op } from 'sequelize'
 
 const routesProjects = Router()
 
-routesProjects.get('/all',async (_,res:Response): Promise<void> => { 
+routesProjects.get('/withtaks',async (_,res:Response): Promise<void> => { 
 	try {
 		
 		const all = await MProject.findAll({
-			where:{
-			deliverydate:{
-				[Op.gte]:'2021-12-24'
-			}	
-			},
+			// where:{
+			// deliverydate:{
+			// 	[Op.gte]:'2021-12-24'
+			// }	
+			// },
 			include:{
 				model:MTask,
 				attributes:['name','description','done'],

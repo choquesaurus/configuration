@@ -2,27 +2,18 @@
 
 @port = {{$dotenv PORT}}
 @host = http://localhost
-@endpoint = /api/projects
-@domain = {{host}}:{{port}}
-@domain_uri = {{domain}}{{endpoint}}
+@domain_uri = {{host}}:{{port}}/api/projects
 #################
-
-
-#######
-# task
-GET {{domain}}/api/task
-########
-
 
 POST  {{domain_uri}}
 Content-Type: application/json
 
 {
-     "id"          : "p4",
-     "name"        : "testing integration",
-     "priority"    : 2,
-     "description" : "Realizar testing",
-     "deliverydate": "2021/12/26"
+     "id"          : "p5",
+     "name"        : "Devops",
+     "priority"    : 1,
+     "description" : "Realizar devops",
+     "deliverydate": "2021/12/13"
 }
 
 #################
@@ -30,12 +21,6 @@ Content-Type: application/json
 #get all
 GET  {{domain_uri}}
 
-
-#####
-#get all with tasks
-GET  {{domain_uri}}/all
-
-GET  {{domain_uri}}
 #################
 #find one
 GET  {{domain_uri}}/p2       

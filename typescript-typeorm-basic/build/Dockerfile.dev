@@ -1,0 +1,11 @@
+FROM node:14-alpine
+WORKDIR  /app
+COPY package*.json ./
+RUN npm install
+COPY . .
+# env handler=express
+# run rm -rf dependencies.txt
+EXPOSE 3009
+CMD ["npm","run","start:dev:docker"]
+
+# cmd ["npm","run","dev"]

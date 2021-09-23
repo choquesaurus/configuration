@@ -1,7 +1,7 @@
 export interface ITask {
     id          : string
     name       : string
-    done        : number
+    done        : boolean
     description :string
     projectid   : string
 }

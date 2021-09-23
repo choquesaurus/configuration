@@ -24,6 +24,9 @@ export default class App {
 	private async dbTestingConnection(){
 		try {
 			await sequelizeConnection.authenticate();
+			// await sequelizeConnection.sync({
+			// 	alter:true
+			// })
 			logger.info('db online');
 		} catch (error) {
 			console.log(error);

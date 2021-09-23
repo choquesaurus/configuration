@@ -23,7 +23,7 @@ class Project extends Model<IProjects, ProjectsCreationAttributes>
   const MProject = Project.init(
       {
       id:{
-          type: DataTypes.CHAR(10),
+          type: DataTypes.STRING(10),
           primaryKey:true
       },
       name:{

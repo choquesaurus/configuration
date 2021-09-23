@@ -2,7 +2,6 @@
 import {  Model, DataTypes,Optional } from 'sequelize';
 import sequelizeConnection from  '../DB/connection';
 import { ITask } from '../Interfaces/index';
-import  MProject  from './MProjects'
 
 interface ProjectsCreationAttributes extends Optional<ITask, 'description'> {} 
 
@@ -12,7 +11,7 @@ class Task extends Model<ITask, ProjectsCreationAttributes>
     
     public name!        : string;
     
-    public done!    : number;
+    public done!    : boolean;
     
     public description! : string;
     
@@ -23,7 +22,7 @@ class Task extends Model<ITask, ProjectsCreationAttributes>
   const MTask = Task.init(
       {
       id:{
-          type: DataTypes.CHAR(10),
+          type: DataTypes.STRING(10),
           primaryKey:true
       },
       name:{
@@ -31,7 +30,7 @@ class Task extends Model<ITask, ProjectsCreationAttributes>
           allowNull:false
       },
       done:{
-          type:DataTypes.INTEGER,
+          type:DataTypes.BOOLEAN,
           allowNull:false
       },
       description:{

@@ -16,8 +16,9 @@ routesTask
             
             const all = await MTask.findAll({
                 include:{
-                    model:MProject
-                }
+                    model:MProject,
+					as:'proyectos'
+				}
             })
             
 			res.status(200).json({ values: all })

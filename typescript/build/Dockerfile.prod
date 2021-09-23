@@ -17,7 +17,7 @@ FROM gcr.io/distroless/nodejs:14
 # copy --from=build /app/dist /app
 COPY --from=build /app /app
 
-WORKDIR app
+WORKDIR /app
 EXPOSE 5600
 CMD ["/app/dist/index.js","cross-env","NODE_ENV=production"]
 # cmd ["npm","start"]
